@@ -9,17 +9,17 @@ import {Component, Input, OnInit} from '@angular/core';
 export class CountryFilter implements OnInit {
   @Input() countryList: string[];
   filteredCountries: string[] = []
-
+  searchText = ""
   ngOnInit() {
-    this.filteredCountries = this.countryList.slice()
+    this.filteredCountries = this.countryList
   }
 
-  filter(event) {
-    const searchText = event.target.value;
+  filter() {
+    const searchText = this.searchText;
     if (searchText.length > 0) {
-      this.filteredCountries = this.countryList.slice().filter(x => x.toLowerCase().includes(searchText.toLowerCase()))
+      this.filteredCountries = this.countryList.filter(x => x.toLowerCase().includes(searchText.toLowerCase()))
     } else {
-      this.filteredCountries = this.countryList.slice()
+      this.filteredCountries = this.countryList
     }
   }
 }

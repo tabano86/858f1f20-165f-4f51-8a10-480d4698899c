@@ -1,7 +1,7 @@
 <section class="layout-column align-items-center mt-50">
-  <input (keyup)="filter($event)" type="text" class="large" placeholder="Enter Country Name" id="app-input" data-test-id="app-input" />
+  <input [(ngModel)]="searchText" (ngModelChange)="filter()" type="text" class="large" placeholder="Enter Country Name" id="app-input" data-test-id="app-input" />
 
-  <ul class="card country-list" data-test-id="countryList" >
+  <ul class="card country-list" data-test-id="countryList" *ngIf="filteredCountries.length > 0">
     <li *ngFor="let c of filteredCountries" class="pa-10 pl-20">{{c}}</li>
   </ul>
 ​
